@@ -1,4 +1,4 @@
-package model;
+package viajeros;
 
 public class Viajero {
     private int numero;
@@ -67,6 +67,17 @@ public class Viajero {
             throw new IllegalArgumentException("error");
         }
         return millas;
+    }
+
+    @Override
+
+    public String toString() {
+        return "Viajero{" +
+                "numero=" + numero +
+                ", dni='" + dni + '\'' +
+                ", nombre='" + nombre + '\'' +
+                ", apellido='" + apellido + '\'' +
+                ", millas=" + millas +    '}';
     }
 }
 
