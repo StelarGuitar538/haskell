@@ -1,4 +1,5 @@
-public class Persona {
+package ejemplo;
+public class Persona2 {
     public static void main(String[] args) {
         String nombre = "Juan";
         int edad = 12;

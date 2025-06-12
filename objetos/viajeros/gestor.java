@@ -46,7 +46,7 @@ public class gestor {
             i++;
         }
         if (i < this.cantidad) {
-            return this.viajeros[i].getMillas()
+            return this.viajeros[i].getMillas();
         } else {
             throw new IllegalArgumentException("error");
         }
@@ -72,7 +72,7 @@ public class gestor {
         }
     }
 
-    public String mejorViajero() {
+    public void mejorViajero() {
         int max = 0;
         for (int i=0; i<this.cantidad; i++) {
            if(this.viajeros[i].getMillas() > max) {
@@ -86,3 +86,5 @@ public class gestor {
             }
         }
 }
+}
+

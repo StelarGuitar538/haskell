@@ -1,3 +1,4 @@
+package ejemplo;
 public class variables {
     public static void main(String[] args) {
         int numero;
