@@ -6,8 +6,17 @@ public class Deportista {
     private Integer nroJugador;
 
     public Deportista(String nombre, String dni) {
-        this.nombre = nombre;
-        this.dni = dni;
+        if (nombre == null) {
+            throw new IllegalArgumentException("error");
+           
+        } 
+        if (dni == null) {
+            throw new IllegalArgumentException("error");
+        }
+        else {
+            this.nombre = nombre;
+            this.dni = dni;
+        }
     }
 
     public String getNombre() {

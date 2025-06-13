@@ -26,6 +26,14 @@ public class Equipo implements IDeporte {
     }
 
     @Override
+    public void mostrar() {
+        for(int i = 0; i< jugadores.size(); i++) {
+            Deportista d = jugadores.get(i);
+            System.out.println(d.getNombre() + d.getDni());
+        }
+    }
+
+    @Override
     public String toString(){
         return nombre + jugadores;
     }

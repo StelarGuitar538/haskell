@@ -42,12 +42,17 @@ public class Campeonato {
     public static List<IDeporte> creaEquipos(List<Deportista> datos, int cantidadJugadores){
         List<IDeporte> equipos = new ArrayList<>();
         int contador = 1;
-        for(int i=0; i + cantidadJugadores <= datos.size(); i+= cantidadJugadores) {
+        if(datos.size() >= cantidadJugadores) {
+             for(int i=0; i + cantidadJugadores <= datos.size(); i+= cantidadJugadores) {
             List<Deportista> grupo = datos.subList(i, i + cantidadJugadores);
             Equipo e = new Equipo("Equipo" + contador, new ArrayList<>(grupo));
             equipos.add(e);
             contador ++;
         }
+        } else {
+            throw new IllegalArgumentException("error");
+        }
+       return equipos;
     }
     /**
     Crea los equipos con los datos pasados como parámetro
@@ -55,31 +60,44 @@ public class Campeonato {
      * @return una lista de Parejas formadas
     */
     public static List<IDeporte> creaParejas(List<Deportista> datos){
-        
+        List<IDeporte> parejas = new ArrayList<>();
+        if(datos.size() >= 2) {
+            for(int i=0; i+1 < datos.size(); i+=2) {
+            Deportista[] duo = {datos.get(i), datos.get(i+1)};
+            Pareja p = new Pareja(duo);
+            p.numerar();
+            parejas.add(p);
+        }
+        } else {
+            throw new IllegalArgumentException("error");
+        }
+        return parejas;
     }
     /**
     * Numera cada integrante del equipo o de la pareja
      * @param datos 
     */
+    /*  equivalencia del for
     public static void numerar(List<IDeporte> datos){
-         
+         for(int i=0; i < datos.size(); i++) {
+            IDeporte d = datos.get(i);
+            d.numerar();
+         }
+    } */
+
+    public static void numerar(List<IDeporte> datos) {
+        for(IDeporte d: datos) {
+            d.numerar();
+        }
     }
     /**
     * Muestra los datos de cada equipo o de cada pareja
      * @param datos
     */
     public static void mostrar(List<IDeporte> datos){
-          
+          for(IDeporte d: datos) {
+            d.mostrar();
+          }
     }
-    
-//Parte del codigo para el metodo main() que debera estar definido en la clase principal.    
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) throws IOException {
-        int cantidadJugadoresFutbol= 5;                  
-    
-        List<Deportista> datosFutbol= leerArchivo("./src/datos/inscriptosFutbol.csv");
-        List<Deportista> datosPinPon= leerArchivo(".src/datos/inscriptosPinPon.csv");
-    }        
+          
 }
